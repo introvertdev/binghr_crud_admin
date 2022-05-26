@@ -638,6 +638,8 @@
             }
             var employeeID = $(this).data('id');
 
+            $('#employee_form')[0].reset();
+
             $('#employee_form').parsley().reset();
 
             $('#form_message').html('');
