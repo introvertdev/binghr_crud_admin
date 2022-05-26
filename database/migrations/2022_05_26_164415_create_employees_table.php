@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('role');
             $table->string('username');
             $table->string('password');
-            $table->string('permission ')->nullable();
+            $table->string('permission')->nullable();
             $table->timestamps();
         });
     }
