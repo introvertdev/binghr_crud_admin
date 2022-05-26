@@ -1,64 +1,99 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# BingHR Laravel Admin CRUD Dashboard [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://ng.linkedin.com/in/oyetade-tobi)
 
-## About Laravel
+Using Laravel PHP framework, I have developed an API and frontend for user administration using HTML, Jquery, AJAX, CSS, PHP and Jquery DataTables.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+#### Added Features
+The following are added features in the application:
+#####
+● Datatable Buttons
+##### This can be used to **``Export to PDF,CSV and EXCEL``**, and can also be used to **``COPY``** table data and as well **``Print``** table records
+#### ● Dark Mode
+##### For easy readability, I implemented a dark/light mode swithc on the top left corner of the dashboard
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+#### ● Permissions Module.
+##### The permissions is dynamically created which is binded to each data record and is stored in the database and can be updated individually
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### ● Employee ID Generator.
+##### For data integrity and employee ID uniqueness sake, I created and ID generator that helps associate a unique random 8-digit ID to each employee
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Setup Guide
+To setup the application in your environment, follow the steps below:
+```javascript
+1. clone repo run git clone https://github.com/introvertdev/binghr_crud_admin.git
+2. run composer install
+3. run copy .env.example .env
+4. configure your database settings in your .env file
+5. run php artisan key:generate
+6. run php artisan migrate
+7. if your are running the application on a local machine ensure your local server (i.e WAMPP, XAMPP etc) is running and phpMydAdmin and Apache is running
+8. Public URL => http://localhost/{application_url}/public/home/
+9. Application URL in my case => binghr_crud_admin
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## API Reference
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### Adminstrator signup
 
-### Premium Partners
+```http
+  GET {Public URL}/api/employees
+```
+**Function ->**  `Get the list of all employees from the database`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+#### Create employee record
 
-## Contributing
+```http
+  POST {Public URL}/api/employees
+```
+ **Function -> :**  `This creates employee data in the database`
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+`employee_id` | `string` | **Required**. Employee ID (Autogenerated)|
+| `first_name` | `string` | **Required**. Employee's first name|
+| `last_name` | `string` | **Required**. Employee's last name|
+| `email` | `string` | **Required**. Employee's email|
+| `phone` | `int` | **Required**. Employee's phone number|
+| `role` | `string` | **Required**. Employee's role|
+| `username` | `string` | **Required**. Employee's username|
+| `paswword` | `string` | **Required**. Employee's password|
+| `c_password` | `string` | **Required**. Confirm Employee's password|
+| `permission` | `comma delimited string` | Read - r, Write - w, Delete - d|
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+#### View single employee
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```http
+  GET {Public URL}/api/employees/{id}
+```
 
-## Security Vulnerabilities
+ **Function -> :**  `Get single employee record by ID`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#### Update single employee
+```http
+  PUT {Public URL}/api/employees/{id}
+```
+ **Function -> :**  `This updates the selected employee data in the database`
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `first_name` | `string` |  Employee's first name|
+| `last_name` | `string` |  Employee's last name|
+| `email` | `string` |  Employee's email|
+| `phone` | `int` | Employee's phone number|
+| `role` | `string` |  Employee's role|
+| `username` | `string` | Employee's username|
+| `paswword` | `string` |  Employee's password|
+| `c_password` | `string` | Confirm Employee's password|
+| `permission` | `comma delimited string` | Read - r, Write - w, Delete - d|
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Delete employee data
+
+```http
+  DELETE /api/employees/{id}
+```
+
+ **Function -> :**  `Deletes employee record from the database`
+
+
