@@ -15,7 +15,7 @@ The following are added features in the application:
 ##### The permissions is dynamically created which is binded to each data record and is stored in the database and can be updated individually
 
 #### ● Employee ID Generator.
-##### For data integrity and employee ID uniqueness sake, I created and ID generator that helps associate a unique random 8-digit ID to each employee
+##### For data integrity and employee ID uniqueness sake, I created and ID generator that helps associate a unique random 8-characters ID to each employee
 
 
 ## Setup Guide
