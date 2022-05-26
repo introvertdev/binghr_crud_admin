@@ -520,8 +520,8 @@
             serverSide: true,
             processing: true,
             ajax: {
-                //url: "http://localhost:8000/api/all-employees",
-                url: "http://localhost/binghr_crud_admin/public/api/all-employees",
+                url: "http://localhost:8000/api/all-employees",
+                //url: "http://localhost/binghr_crud_admin/public/api/all-employees",
                 dataType: "json",
                 type: "POST",
                 //data: { _token: "{{csrf_token()}}" },
@@ -577,11 +577,13 @@
             event.preventDefault();
             if (buttonClassState == 1) {
                 var employee_id = $('#hidden_id').val();
-                url = "http://localhost/binghr_crud_admin/public/api/employees/" + employee_id;
+                //url = "http://localhost/binghr_crud_admin/public/api/employees/" + employee_id;
+                url = "http://localhost:8000/api/employees/" + employee_id;
                 method = 'PUT';
                 var value = 'Edit Employee';
             } else {
-                url = "http://localhost/binghr_crud_admin/public/api/employees";
+                //url = "http://localhost/binghr_crud_admin/public/api/employees";
+                url = "http://localhost:8000/api/employees/";
                 method = "POST";
                 var value = 'Add Employee';
             }
@@ -642,7 +644,8 @@
 
             $.ajax({
 
-                url: "http://localhost/binghr_crud_admin/public/api/employees/" + employeeID,
+                //url: "http://localhost/binghr_crud_admin/public/api/employees/" + employeeID,
+                url: "http://localhost:8000/api/employees/"+ employeeID,
 
                 method: "GET",
 
@@ -709,8 +712,8 @@
 
                 $.ajax({
 
-                    url: "http://localhost/binghr_crud_admin/public/api/employees/" + employee_id,
-
+                    //url: "http://localhost/binghr_crud_admin/public/api/employees/" + employee_id,
+                    url: "http://localhost:8000/api/employees/"+ employee_id,
                     method: "DELETE",
 
                     success: function(data) {
