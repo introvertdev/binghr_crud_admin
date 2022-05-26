@@ -28,7 +28,7 @@ git clone https://github.com/introvertdev/binghr_crud_admin.git
 ##### ● Install dependencies.
 ####
 ```javascript
-run composer install
+composer install
 ```
 ##### ● Copy and rename env.example file.
 ####
