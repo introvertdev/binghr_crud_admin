@@ -15,22 +15,40 @@ The following are added features in the application:
 ##### The permissions is dynamically created which is binded to each data record and is stored in the database and can be updated individually
 
 #### ● Employee ID Generator.
-##### For data integrity and employee ID uniqueness sake, I created and ID generator that helps associate a unique random 8-characters ID to each employee
+##### For data integrity and employee ID uniqueness sake, I created and ID generator that helps associate a unique random 8-digit ID to each employee
 
 
 ## Setup Guide
 To setup the application in your environment, follow the steps below:
+##### ● To clone repo, run.
+####
 ```javascript
-1. clone repo run git clone https://github.com/introvertdev/binghr_crud_admin.git
-2. run composer install
-3. run copy .env.example .env
-4. configure your database settings in your .env file
-5. run php artisan key:generate
-6. run php artisan migrate
-7. if your are running the application on a local machine ensure your local server (i.e WAMPP, XAMPP etc) is running and phpMydAdmin and Apache is running
-8. Public URL => http://localhost/{application_url}/public/home/
-9. Application URL in my case => binghr_crud_admin
+git clone https://github.com/introvertdev/binghr_crud_admin.git
 ```
+##### ● Install dependencies.
+####
+```javascript
+run composer install
+```
+##### ● Copy and rename env.example file.
+####
+```javascript
+copy .env.example .env
+```
+#### Create a database and set DB_DATABASE in your .env file to the name of the database you created. Then run the command bellow to populate the database
+
+```javascript 
+php artisan migrate
+```
+##### ● Start the application.
+####
+```javasript
+php artisan serve
+```
+Your application should be running on http://localhost:8000
+#### API_URL => {application_url}/api
+#### Application URL => http://localhost:8000/home/index.php
+
 
 
 ## API Reference
@@ -38,14 +56,14 @@ To setup the application in your environment, follow the steps below:
 #### Adminstrator signup
 
 ```http
-  GET {Public URL}/api/employees
+  GET {API_URL}/api/employees
 ```
 **Function ->**  `Get the list of all employees from the database`
 
 #### Create employee record
 
 ```http
-  POST {Public URL}/api/employees
+  POST {API_URL}/employees
 ```
  **Function -> :**  `This creates employee data in the database`
 | Parameter | Type     | Description                |
@@ -65,14 +83,14 @@ To setup the application in your environment, follow the steps below:
 #### View single employee
 
 ```http
-  GET {Public URL}/api/employees/{id}
+  GET {API_URL}/employees/{id}
 ```
 
  **Function -> :**  `Get single employee record by ID`
 
 #### Update single employee
 ```http
-  PUT {Public URL}/api/employees/{id}
+  PUT {API_URL}/employees/{id}
 ```
  **Function -> :**  `This updates the selected employee data in the database`
 | Parameter | Type     | Description                |
@@ -91,7 +109,7 @@ To setup the application in your environment, follow the steps below:
 #### Delete employee data
 
 ```http
-  DELETE /api/employees/{id}
+  DELETE {API_URL}/employees/{id}
 ```
 
  **Function -> :**  `Deletes employee record from the database`
