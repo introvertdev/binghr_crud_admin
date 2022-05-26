@@ -35,6 +35,12 @@ composer install
 ```javascript
 copy .env.example .env
 ```
+####  Generate application key
+
+```javascript 
+php artisan key:generate
+```
+
 #### Create a database and set DB_DATABASE in your .env file to the name of the database you created. Then run the command bellow to populate the database
 
 ```javascript 
