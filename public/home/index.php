@@ -503,7 +503,6 @@
 <script>
     //Fetch employee data into Datatable
     $(document).ready(function() {
-        //$('.js-dataTable-buttons').DataTable();
 
         //Buttons examples
         var dataTable = $('.js-dataTable-buttons').DataTable({
@@ -586,8 +585,6 @@
                 method = "POST";
                 var value = 'Add Employee';
             }
-            console.log(method)
-            console.log(buttonClassState)
             if ($('#employee_form').parsley().isValid()) {
                 console.log($(this).serialize())
                 $.ajax({
@@ -610,7 +607,6 @@
                             $('#form_message').html(data.message);
                             $('#submit_button').val(value);
                         } else {
-                            console.log('success')
                             Dashmix.helpers('jq-notify', {
                                 type: 'success',
                                 icon: 'fa fa-check me-1 mr-3',
@@ -633,14 +629,12 @@
         });
 
         $(document).on('click', '.edit_button', function() {
-            console.log('mo click')
             if (buttonClassState == 0) {
                 buttonClassState = 1;
                 //$('#employee_form').attr('id', 'employee_form');
                 $('#submit_button').toggleClass("add_employee_submit edit_employee_submit")
             }
             var employeeID = $(this).data('id');
-            console.log(employeeID)
 
             $('#employee_form').parsley().reset();
 
@@ -761,7 +755,6 @@
                 }
             });
 
-            console.log(JSON.stringify(permissionDictionary))
             $('#permission').val(JSON.stringify(permissionDictionary))
         }
 
